@@ -1,0 +1,5 @@
+@CHARSET "ISO-8859-1";
+.categoryItem span{
+	float: left;
+	clear: left;
+}
