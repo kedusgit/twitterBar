@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class TwiiterServlet
  */
-//@WebServlet("/TwiiterServlet")
+@WebServlet("/TwiiterServlet")
 public class TwiiterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

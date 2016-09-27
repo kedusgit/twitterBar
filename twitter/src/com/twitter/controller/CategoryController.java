@@ -15,7 +15,7 @@ import com.twitter.model.CategoryItem;
 /**
  * Servlet implementation class CategoryController
  */
-@WebServlet("/CategoryController")
+@WebServlet("/categoryController")
 public class CategoryController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private CategoryItemDao cateogryItemDao = CategoryItemDao.getInstance();
@@ -35,12 +35,15 @@ public class CategoryController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String categoryName = request.getParameter("categoryName");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/home.jsp");
 		List<CategoryItem> categoryItems;
 		if (categoryName == null) {
 			categoryItems = cateogryItemDao.getCategoryItems("romance");
 		} else {
 			categoryItems = cateogryItemDao.getCategoryItems(categoryName);
+		}
+		if(request.getAttribute("categoryItems") != null){
+			request.removeAttribute("categoryItems");
 		}
 		request.setAttribute("categoryItems", categoryItems);
 		dispatcher.forward(request, response);

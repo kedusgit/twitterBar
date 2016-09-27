@@ -2,11 +2,27 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<!-- <script>
+	$(function() {
+		alert("From javascript");
+		console.log("From javascript");
+	});
+</script> -->
+<script src="ajax.js"></script>
 <!--CSS LINK -->
 <link rel="stylesheet" type="text/css" href="/theme.css">
 
@@ -15,69 +31,80 @@
 <body>
 	<h3>Twitter Bar dynamic web project</h3>
 	<nav class="navbar navbar-default">
-  <div class="container col-lg-12 col-md-8 col-sm-4 col-xs-3">
+		<div class="container col-lg-12 col-md-8 col-sm-4 col-xs-3">
 
-   <div class="row"> 
-	
-	<div class="Category1 col-sm-3">
-   <div class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Romance <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-        </ul>
-    </div>
-	</div>
-	<div class="Category2 col-sm-3">
-   <div class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Comedy <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-        </ul>
-    </div>
-	</div>
-	<div class="Category3 col-sm-3">
-   <div class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Sci-Fi <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-        </ul>
-    </div>
-	</div>
-	<div class="Category4 col-sm-3">
-	<div class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">SitCome <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-        </ul>
-    </div>
-	</div>
-	<ul class="nav navbar-nav navbar-right">
-     <li class="active"><a href="#">trending</a></li></ul>
-	
-    
-  </div>
-  </div>
- 
-</nav>
+			<div class="row">
+
+				<div class="Category1 col-sm-3">
+					<div class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">Romance
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="Category2 col-sm-3">
+					<div class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">Comedy
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="Category3 col-sm-3">
+					<div class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">Sci-Fi
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="Category4 col-sm-3">
+					<div class="dropdown">
+						<a href="#" data-toggle="dropdown" class="dropdown-toggle">SitCome
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+						</ul>
+					</div>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">trending</a></li>
+				</ul>
+
+
+			</div>
+		</div>
+
+	</nav>
 
 	<div class="container col-lg-12 col-md-8 col-sm-4 col-xs-3">
-		<div class="row">	
-			
+		<div class="row">
+
 			<div class="image1 col-sm-3">
-					<div >Image1</div>
+				<div id= "imagelocation">
+					<!-- <img src="1.jpg" alt="2.jpg"> -->
+				</div>
 			</div>
 			<div class="image2 col-sm-3">
-					<div >Image2</div>
+				<div>Image2</div>
 			</div>
 			<div class="image3 col-sm-3">
-					<div >Image3</div>
+				<div>Image3</div>
 			</div>
 			<div class="image4 col-sm-3">
-					<div >Image4</div>
+				<div>Image4</div>
 			</div>
 		</div>
 	</div>
