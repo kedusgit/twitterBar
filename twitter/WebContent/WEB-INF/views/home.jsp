@@ -21,8 +21,6 @@
 <link href="resources/styles/wap.css" rel="stylesheet">
 
 
-
-
 </head>
 
 <body>
@@ -46,19 +44,11 @@
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#">Home</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Contact</a></li>
-							<li class="dropdown"><a href="#" class="dropdown-toggle"
-								data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false">Categories <span class="caret"></span>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a href="#">Romance</a></li>
-									<li><a href="#">Comedy</a></li>
-									<li><a href="#">SCI-Fiction</a></li>
-									<li><a href="#">Sitcoms</a></li>
-								</ul></li>
+							<li data-category="romance" class="menu-item"><a href="#">Romance</a></li>
+							<li data-category="comedy" class="menu-item"><a href="#">Comedy</a></li>
+							<li data-category="sci fiction" class="menu-item"><a
+								href="#">SCI-Fiction</a></li>
+							<li data-category="sitcoms" class="menu-item"><a href="#">Sitcoms</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="active"><a href="./">Default <span
@@ -72,41 +62,10 @@
 				<!--/.container-fluid -->
 			</nav>
 
-			<!-- Main component for a primary marketing message or call to action -->
-			<div class="jumbotron">
-				<h1>Navbar example</h1>
-				<p>This example is a quick exercise to illustrate how the
-					default, static navbar and fixed to top navbar work. It includes
-					the responsive CSS and HTML, so it also adapts to your viewport and
-					device.</p>
-				<p>
-					<a class="btn btn-lg btn-primary" href="../../components/#navbar"
-						role="button">View navbar docs &raquo;</a>
-				</p>
-			</div>
-
 		</div>
 
-		<div class="row">
+		<div id="twits-container" class="row" ></div>
 
-			<div class="col-xs-12 col-md-3">
-				<div class="twit">Here the content of the twit</div>
-
-			</div>
-
-			<div class="col-xs-12 col-md-3">
-				<div class="twit">Here the content of the twit</div>
-			</div>
-
-			<div class="col-xs-12 col-md-3">
-				<div class="twit">Here the content of the twit</div>
-			</div>
-
-			<div class="col-xs-12 col-md-3">
-				<div class="twit">Here the content of the twit</div>
-			</div>
-
-		</div>
 
 	</div>
 	<!-- /container -->
