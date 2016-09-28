@@ -1,11 +1,19 @@
 @CHARSET "ISO-8859-1";
 .row .categoryItem {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 15px;
+	margin-bottom: 15px;
 	
 }
 .categoryItem span{
 	display: block;
 	margin: 0px;
 	backgound-color: blue;
+}
+.outer div{
+	float: right;
+	overflow:auto;
+}
+img{
+	height: 200px;
+	width: 200px;
 }

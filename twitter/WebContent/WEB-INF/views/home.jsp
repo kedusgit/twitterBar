@@ -20,12 +20,7 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/twitter/resources/styles/style.css" type="text/css" />
-<!-- <script>
-	$(function() {
-		alert("From javascript");
-		console.log("From javascript");
-	});
-</script> -->
+
 <script src="ajax.js"></script>
 <!--CSS LINK -->
 <link rel="stylesheet" type="text/css" href="/theme.css">
@@ -39,16 +34,17 @@
 
 		<div class="row">
 			<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a
+			
+				<li class="active" ><a
 					href="<c:url value='/categoryController?categoryName=romance'/>">Romance
 				</a></li>
-				<li ><a
+				<li class="active"><a
 					href="<c:url value='/categoryController?categoryName=sciFiction'/>">Sci Fiction
 				</a></li>
-				<li ><a
+				<li class="active"><a
 					href="<c:url value='/categoryController?categoryName=commedy'/>">Comedy
 				</a></li>
-				<li ><a
+				<li class="active"><a
 					href="<c:url value='/categoryController?categoryName=sitCom'/>">SitCom
 				</a></li>
 			</ul>
@@ -63,7 +59,7 @@
 	</div>
 
 	</nav>
-
+    <div class ="outer">
 	<div class="container col-lg-12 col-md-8 col-sm-4 col-xs-3">
 		<div class="row">
 
@@ -75,6 +71,7 @@
 				</div>
 			</c:forEach>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 package com.twitter.model;
-
+//the model class
 public class CategoryItem {
 	private String itemDescription;
 	private String itemURL;
