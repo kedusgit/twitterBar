@@ -58,6 +58,7 @@ public class CategoryItemDao {
 		return instance;
 	}
 	
+	
 	public List<CategoryItem> getCategoryItems(String categoryName){
 		return categoryItems.get(categoryName);
 	}

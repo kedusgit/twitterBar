@@ -42,6 +42,10 @@ public class CategoryController extends HttpServlet {
 		if(request.getAttribute("categoryItems") != null){
 			request.removeAttribute("categoryItems");
 		}
+		if (request.getAttribute("googlemap")!=null){
+			RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/views/googlemap.jsp");
+			rd.forward(request, response);
+		}
 		request.setAttribute("categoryItems", categoryItems);
 		dispatcher.forward(request, response);
 	}

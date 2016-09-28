@@ -53,7 +53,9 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active"><a href="#">trending</a></li>
 			</ul>
-
+        <span><ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="/twitter/staticpages/googlemap.html">GoogleMap</a></li>
+			</ul></span>
 
 		</div>
 	</div>
@@ -73,5 +75,6 @@
 		</div>
 	</div>
 	</div>
+	
 </body>
 </html>
