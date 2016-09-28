@@ -40,14 +40,13 @@
 								class="icon-bar"></span> <span class="icon-bar"></span> <span
 								class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Project name</a>
+						<a class="navbar-brand" href="#">WAP Project - Pink Group</a>
 					</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
 							<li data-category="romance" class="menu-item"><a href="#">Romance</a></li>
 							<li data-category="comedy" class="menu-item"><a href="#">Comedy</a></li>
-							<li data-category="sci" class="menu-item"><a
-								href="#">SCI-Fiction</a></li>
+							<li data-category="sci" class="menu-item"><a href="#">SCI-Fiction</a></li>
 							<li data-category="sitcoms" class="menu-item"><a href="#">Sitcoms</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
@@ -64,7 +63,7 @@
 
 		</div>
 
-		<div id="twits-container" class="row" ></div>
+		<div id="twits-container" class="row"></div>
 
 
 	</div>

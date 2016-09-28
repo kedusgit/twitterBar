@@ -2,6 +2,9 @@ package com.twitter;
 
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import twitter4j.GeoLocation;
 import twitter4j.Query;
 import twitter4j.Query.Unit;
@@ -32,20 +35,32 @@ public class TwitterClass {
 	}
 
 	public String searchByQueries(String queries) throws TwitterException {
+
 		Query query = new Query(queries);
+
 		QueryResult result;
+
 		result = twitter.search(query);
+
 		List<Status> tweets = result.getTweets();
-		String json = "[";
+
+		JSONArray arrData = new JSONArray();
+
 		for (Status tweet : tweets) {
-			json += "{ \"name\" :" + "\"" + tweet.getUser().getScreenName() + "\"" + "," + "\"ProfilePic\":" + "\""
-					+ tweet.getUser().getMiniProfileImageURL() + "\"" + "," + "\"Location\":" + "\""
-					+ tweet.getUser().getLocation() + "\"" + "," + "\"Tweet\":" + "\"" + tweet.getText() + "\"" + "},";
+
+			JSONObject objJSON = new JSONObject();
+
+			objJSON.put("name", tweet.getUser().getScreenName());
+			objJSON.put("profile_pic", tweet.getUser().getMiniProfileImageURL());
+			objJSON.put("location", tweet.getUser().getLocation());
+			objJSON.put("tweet_content", tweet.getText());
+			objJSON.put("url", "https://twitter.com/" + tweet.getUser().getScreenName() + "/status/" + tweet.getId());
+
+			arrData.add(objJSON);
 
 		}
-		json = json.substring(0, json.length() - 1);
-		json += "]";
-		return json;
+
+		return arrData.toString();
 	}
 
 	public String SearchByGeoLocation(double latitude, double longitude, int radius) throws TwitterException {
@@ -59,25 +74,27 @@ public class TwitterClass {
 		QueryResult result;
 
 		result = twitter.search(query);
-		String json = "[";
+
 		List<Status> tweets = result.getTweets();
-		// System.out.println(result.toString());
+
+		JSONArray arrData = new JSONArray();
 
 		for (Status tweet : tweets) {
 
-			// System.out.println("@" + tweet.getUser().getScreenName() + " - "
-			// + tweet.getText());
-			json += "{ \"name\" :" + "\"" + tweet.getUser().getScreenName() + "\"" + "," + "\"ProfilePic\":" + "\""
-					+ tweet.getUser().getMiniProfileImageURL() + "\"" + "," + "\"Location\":" + "\""
-					+ tweet.getUser().getLocation() + "\"" + "," + "\"Location\":" + "\""
-					+ tweet.getGeoLocation().getLatitude() + "\"" + "," + "\"Location\":" + "\""
-					+ tweet.getGeoLocation().getLongitude() + "\"" + "," + "\"Tweet\":" + "\"" + tweet.getText() + "\""
-					+ "},";
+			JSONObject objJSON = new JSONObject();
+
+			objJSON.put("name", tweet.getUser().getScreenName());
+			objJSON.put("profile_pic", tweet.getUser().getMiniProfileImageURL());
+			objJSON.put("location", tweet.getUser().getLocation());
+			objJSON.put("latitude", tweet.getGeoLocation().getLatitude());
+			objJSON.put("longitude", tweet.getGeoLocation().getLongitude());
+			objJSON.put("tweet", tweet.getText());
+
+			arrData.add(objJSON);
 
 		}
-		json = json.substring(0, json.length() - 1);
-		json += "]";
-		return json;
+
+		return arrData.toString();
 
 	}
 
