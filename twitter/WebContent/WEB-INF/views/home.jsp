@@ -46,7 +46,7 @@
 						<ul class="nav navbar-nav">
 							<li data-category="romance" class="menu-item"><a href="#">Romance</a></li>
 							<li data-category="comedy" class="menu-item"><a href="#">Comedy</a></li>
-							<li data-category="sci fiction" class="menu-item"><a
+							<li data-category="sci" class="menu-item"><a
 								href="#">SCI-Fiction</a></li>
 							<li data-category="sitcoms" class="menu-item"><a href="#">Sitcoms</a></li>
 						</ul>

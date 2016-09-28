@@ -1,99 +1,84 @@
+package com.twitter;
+
 import java.util.List;
 
 import twitter4j.GeoLocation;
-import twitter4j.GeoQuery;
-import twitter4j.Location;
-import twitter4j.Paging;
-import twitter4j.Place;
 import twitter4j.Query;
 import twitter4j.Query.Unit;
 import twitter4j.QueryResult;
-import twitter4j.ResponseList;
 import twitter4j.Status;
-import twitter4j.Trends;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
-import twitter4j.conf.ConfigurationBuilder;
 
+public class TwitterClass {
 
-public class TwitterExample {
-	private final static String consumerKey="OZP4VD43jqTxSWFv2fHRsY8LQ";
-	private final static String consumerSecret="8HLMGkoJ5Rsr95uoNI0WqkcXlDqXKB5AVTKq0cAFejPwWDOyzF";
-	private final static String accessToken="780805317609132032-rwNhKdcUlF4nyg4LkbAu6REYuBXuhia";
-	private final static String accessTokenSecret="NQB1JSH98DLTtRxUFtNce9X7R6hINNTELpzabGyxDCHJt";
-	static TwitterFactory tFactory=new TwitterFactory();
-	static Twitter twitter=tFactory.getInstance();
-	
-	public static void init(){
-		ConfigurationBuilder cb = new ConfigurationBuilder();
-	    cb.setJSONStoreEnabled(true);
-	    
-		twitter.setOAuthConsumer(consumerKey,consumerSecret);
-		twitter.setOAuthAccessToken(new AccessToken(accessToken,accessTokenSecret));
+	private final static String consumerKey = "OZP4VD43jqTxSWFv2fHRsY8LQ";
+	private final static String consumerSecret = "8HLMGkoJ5Rsr95uoNI0WqkcXlDqXKB5AVTKq0cAFejPwWDOyzF";
+	private final static String accessToken = "780805317609132032-rwNhKdcUlF4nyg4LkbAu6REYuBXuhia";
+	private final static String accessTokenSecret = "NQB1JSH98DLTtRxUFtNce9X7R6hINNTELpzabGyxDCHJt";
+
+	private TwitterFactory tFactory;
+	private Twitter twitter;
+
+	public TwitterClass() {
+
+		tFactory = new TwitterFactory();
+		twitter = tFactory.getInstance();
+		twitter.setOAuthConsumer(consumerKey, consumerSecret);
+		twitter.setOAuthAccessToken(new AccessToken(accessToken, accessTokenSecret));
+
 	}
-	public static String searchByQueries(String queries) throws TwitterException{
+
+	public String searchByQueries(String queries) throws TwitterException {
 		Query query = new Query(queries);
-        QueryResult result;
-        result = twitter.search(query);
-        List<Status> tweets = result.getTweets();
-        String json="{"+ queries+ ":[";
-        for (Status tweet : tweets) {
-                 	json+="{ \"name\" :"+ "\""+ tweet.getUser().getScreenName()+"\""+","
-        			+"\"ProfilePic\":"+"\""+ tweet.getUser().getMiniProfileImageURL()+"\""+","
-        			+"\"Location\":"+ "\""+tweet.getUser().getLocation()+"\""+","
-        			+"\"Tweet\":"+"\"" +tweet.getText()+"\""+"},";
-            
-        }
-        json=json.substring(0, json.length()-1);
-        json+="]}";
-        return json;
+		QueryResult result;
+		result = twitter.search(query);
+		List<Status> tweets = result.getTweets();
+		String json = "[";
+		for (Status tweet : tweets) {
+			json += "{ \"name\" :" + "\"" + tweet.getUser().getScreenName() + "\"" + "," + "\"ProfilePic\":" + "\""
+					+ tweet.getUser().getMiniProfileImageURL() + "\"" + "," + "\"Location\":" + "\""
+					+ tweet.getUser().getLocation() + "\"" + "," + "\"Tweet\":" + "\"" + tweet.getText() + "\"" + "},";
+
+		}
+		json = json.substring(0, json.length() - 1);
+		json += "]";
+		return json;
 	}
-	public static String SearchByGeoLocation(double latitude, double longitude, int radius) throws TwitterException{
-		//Query query = new Query("");
+
+	public String SearchByGeoLocation(double latitude, double longitude, int radius) throws TwitterException {
+		// Query query = new Query("");
 		Query query = new Query(""); //
 
-        GeoLocation location = new GeoLocation(latitude, longitude);
-        Unit unit = Query.KILOMETERS; // or Query.MILES;
-        query.setGeoCode(location, radius, unit);
+		GeoLocation location = new GeoLocation(latitude, longitude);
+		Unit unit = Query.KILOMETERS; // or Query.MILES;
+		query.setGeoCode(location, radius, unit);
 
-        QueryResult result; 
-        
-        result = twitter.search(query);
-        String json="{"+ "Ebi's Location"+ ":[";
-        List<Status> tweets = result.getTweets();
-        //System.out.println(result.toString());
-        
-        for (Status tweet : tweets) {
-        	
-            //System.out.println("@" + tweet.getUser().getScreenName() + " - " + tweet.getText());
-        	json+="{ \"name\" :"+ "\""+ tweet.getUser().getScreenName()+"\""+","
-        			+"\"ProfilePic\":"+"\""+ tweet.getUser().getMiniProfileImageURL()+"\""+","
-        			+"\"Location\":"+ "\""+tweet.getUser().getLocation()+"\""+","
-        			+"\"Location\":"+ "\""+tweet.getGeoLocation().getLatitude()+"\""+","
-        			+"\"Location\":"+ "\""+tweet.getGeoLocation().getLongitude()+"\""+","
-        			+"\"Tweet\":"+"\"" +tweet.getText()+"\""+"},";
-        	
-        	
-        }
-        json=json.substring(0, json.length()-1);
-        json+="]}";
-        return json;
-        
-	}
-	public static void main(String[] args) throws TwitterException {
-		// TODO Auto-generated method stub
-		init();
-		
-		System.out.println(searchByQueries("#Mongolia"));
-		System.out.println(SearchByGeoLocation(47.907711029053,106.88323974609,2));
-		
+		QueryResult result;
+
+		result = twitter.search(query);
+		String json = "[";
+		List<Status> tweets = result.getTweets();
+		// System.out.println(result.toString());
+
+		for (Status tweet : tweets) {
+
+			// System.out.println("@" + tweet.getUser().getScreenName() + " - "
+			// + tweet.getText());
+			json += "{ \"name\" :" + "\"" + tweet.getUser().getScreenName() + "\"" + "," + "\"ProfilePic\":" + "\""
+					+ tweet.getUser().getMiniProfileImageURL() + "\"" + "," + "\"Location\":" + "\""
+					+ tweet.getUser().getLocation() + "\"" + "," + "\"Location\":" + "\""
+					+ tweet.getGeoLocation().getLatitude() + "\"" + "," + "\"Location\":" + "\""
+					+ tweet.getGeoLocation().getLongitude() + "\"" + "," + "\"Tweet\":" + "\"" + tweet.getText() + "\""
+					+ "},";
+
+		}
+		json = json.substring(0, json.length() - 1);
+		json += "]";
+		return json;
 
 	}
-
-	
-
-	
 
 }
