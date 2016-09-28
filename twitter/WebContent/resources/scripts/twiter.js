@@ -9,7 +9,7 @@
 		};
 
 		$.ajax({
-			url : 'TwiiterServlet',
+			url : 'TwitterByCategory',
 			data : arrData,
 			success : function(objResponse) {
 				console.log(objResponse);
