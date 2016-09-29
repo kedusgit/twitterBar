@@ -1,6 +1,8 @@
 package com.twitter.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +26,6 @@ public class TweetsByTrend extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-
 		String strTrend = request.getParameter("trend");
 		String strPage = request.getParameter("page");
 		int intPage = Integer.valueOf(strPage);
@@ -36,12 +37,17 @@ public class TweetsByTrend extends HttpServlet {
 		String jsonResponse = "";
 
 		try {
-			jsonResponse = objTwiter.searchByQueriesWithPage(strTrend,intPage);
+			jsonResponse = objTwiter.searchByQueriesWithPage(strTrend, intPage);
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
 
-		response.getWriter().println(jsonResponse);
+		response.setContentType("application/json");
+
+		PrintWriter out = response.getWriter();
+
+		out.print(jsonResponse);
+		out.flush();
 	}
 
 }

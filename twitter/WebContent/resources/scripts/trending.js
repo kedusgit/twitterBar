@@ -27,18 +27,16 @@
 	function fnGetTrending() {
 
 		$.ajax({
-			url : 'TwitterTrends',
+			url : 'TweetTrends',
 			dataType : 'json',
-			cache : false,
 			success : function(objResponse) {
 
-				$(objResponse).each(
-						function(index, item) {
-							$("#selTrending").append(
-									$("<option>").val(item.name)
-											.text(item.name));
-						});
-
+				$(objResponse).each(function(index, item) {
+					$("#selTrending").append($('<option>', {
+						value : item.name,
+						text : item.name
+					}));
+				});
 			}
 		});
 

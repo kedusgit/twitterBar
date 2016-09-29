@@ -1,6 +1,8 @@
 package com.twitter.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +41,12 @@ public class TweetsByCategory extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.getWriter().println(jsonResponse);
+		response.setContentType("application/json");
+
+		PrintWriter out = response.getWriter();
+
+		out.print(jsonResponse);
+		out.flush();
 	}
 
 }

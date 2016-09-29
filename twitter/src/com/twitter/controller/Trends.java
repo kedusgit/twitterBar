@@ -1,6 +1,8 @@
 package com.twitter.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +13,7 @@ import com.twitter.TwitterClass;
 
 import twitter4j.TwitterException;
 
-@WebServlet("/TwitterTrends")
+@WebServlet("/TweetTrends")
 public class Trends extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +35,14 @@ public class Trends extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.getWriter().println(jsonResponse);
+		response.setContentType("application/json");
+		
+		PrintWriter out = response.getWriter();
+
+		out.print(jsonResponse);
+		out.flush();
+
+		
 	}
 
 }

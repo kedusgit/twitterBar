@@ -21,7 +21,7 @@ function initMap() {
 		timeout = window.setTimeout(function() {
 			timeout = null;
 			getTweets(map);
-		}, 500);
+		}, 2000);
 
 	});
 

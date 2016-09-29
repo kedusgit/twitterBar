@@ -47,13 +47,11 @@ public class TwitterClass {
 		JSONArray arrData = new JSONArray();
 
 		ArrayList<Status> pageTweet = new ArrayList<Status>(tweets);
-		String json = "{" + queries + ":[";
 
-		for (int i = page; i < page * 25; i++) {
-			json += "{ \"name\" :" + "\"" + pageTweet.get(i).getUser().getScreenName().toString() + "\"" + ","
-					+ "\"ProfilePic\":" + "\"" + pageTweet.get(i).getUser().getMiniProfileImageURL().toString() + "\""
-					+ "," + "\"Location\":" + "\"" + pageTweet.get(i).getUser().getLocation().toString() + "\"" + ","
-					+ "\"Tweet\":" + "\"" + pageTweet.get(i).getText().toString() + "\"" + "},";
+		int intPerPage = 20;
+		int intOffset = page * intPerPage;
+		
+		for (int i = intOffset ; i < intOffset + intPerPage; i++) {
 
 			JSONObject objJSON = new JSONObject();
 

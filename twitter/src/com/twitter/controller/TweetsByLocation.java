@@ -1,6 +1,8 @@
 package com.twitter.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,10 +28,10 @@ public class TweetsByLocation extends HttpServlet {
 
 		String strLatitude = request.getParameter("lat");
 		String strLongitude = request.getParameter("lng");
-		
+
 		double dblLatitude = Double.valueOf(strLatitude);
 		double dblLongitude = Double.valueOf(strLongitude);
-		
+
 		String jsonResponse = "";
 
 		try {
@@ -38,7 +40,13 @@ public class TweetsByLocation extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		response.getWriter().println(jsonResponse);
+		response.setContentType("application/json");
+
+		PrintWriter out = response.getWriter();
+
+		out.print(jsonResponse);
+		out.flush();
+
 	}
 
 }
