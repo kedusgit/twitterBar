@@ -33,7 +33,56 @@ public class TwitterClass {
 		twitter.setOAuthAccessToken(new AccessToken(accessToken, accessTokenSecret));
 
 	}
+	public static String searchByQueriesWithPage(String queries, int page) throws TwitterException{
+		Query query = new Query(queries);
+        QueryResult result;
+        query.setCount(100);
+        
+        result = twitter.search(query);
+        List<Status> tweets = result.getTweets();
+        JSONArray arrData = new JSONArray();
+        
+        ArrayList<Status> pageTweet= new ArrayList<Status>(tweets);
+        String json="{"+ queries+ ":[";
+        
+        for (int i=page;i<page*10;i++){
+        	json+="{ \"name\" :"+ "\""+ pageTweet.get(i).getUser().getScreenName().toString()+"\""+","
+        			+"\"ProfilePic\":"+"\""+ pageTweet.get(i).getUser().getMiniProfileImageURL().toString()+"\""+","
+        			+"\"Location\":"+ "\""+pageTweet.get(i).getUser().getLocation().toString()+"\""+","
+        			+"\"Tweet\":"+"\"" +pageTweet.get(i).getText().toString()+"\""+"},";
+        	
+        	JSONObject objJSON = new JSONObject();
 
+			objJSON.put("name", pageTweet.get(i).getUser().getScreenName().toString());
+			objJSON.put("profile_pic", pageTweet.get(i).getUser().getMiniProfileImageURL().toString());
+			objJSON.put("location", pageTweet.get(i).getUser().getLocation().toString());
+			objJSON.put("tweet_content", pageTweet.get(i).getText().toString());
+			objJSON.put("url", "https://twitter.com/" + pageTweet.get(i).getText().toString() + "/status/" + pageTweet.get(i).getId());
+
+			arrData.add(objJSON);
+        }
+        
+        return arrData.toString();
+        
+	}
+	public static String Trending() throws TwitterException{
+		
+        Trends result = twitter.getPlaceTrends(1);
+        
+        JSONArray arrData = new JSONArray();
+        for (Trend b:result.getTrends()){
+        	JSONObject objJSON = new JSONObject();
+
+			objJSON.put("name", b.getName());
+			objJSON.put("QueryName", b.getQuery());
+			objJSON.put("URL", b.getURL());
+			
+
+			arrData.add(objJSON);
+        }
+        return arrData.toString();
+        
+	}
 	public String searchByQueries(String queries) throws TwitterException {
 
 		Query query = new Query(queries);
