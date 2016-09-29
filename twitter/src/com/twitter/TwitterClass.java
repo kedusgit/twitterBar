@@ -64,16 +64,15 @@ public class TwitterClass {
 	}
 
 	public String SearchByGeoLocation(double latitude, double longitude, int radius) throws TwitterException {
-		// Query query = new Query("");
+		
 		Query query = new Query(""); //
 
 		GeoLocation location = new GeoLocation(latitude, longitude);
 		Unit unit = Query.KILOMETERS; // or Query.MILES;
 		query.setGeoCode(location, radius, unit);
+		query.setCount(10);
 
-		QueryResult result;
-
-		result = twitter.search(query);
+		QueryResult result = twitter.search(query);
 
 		List<Status> tweets = result.getTweets();
 
@@ -82,13 +81,22 @@ public class TwitterClass {
 		for (Status tweet : tweets) {
 
 			JSONObject objJSON = new JSONObject();
-
+			
 			objJSON.put("name", tweet.getUser().getScreenName());
 			objJSON.put("profile_pic", tweet.getUser().getMiniProfileImageURL());
+			objJSON.put("tweet_content", tweet.getText());
+			objJSON.put("url", "https://twitter.com/" + tweet.getUser().getScreenName() + "/status/" + tweet.getId());
 			objJSON.put("location", tweet.getUser().getLocation());
-			objJSON.put("latitude", tweet.getGeoLocation().getLatitude());
-			objJSON.put("longitude", tweet.getGeoLocation().getLongitude());
-			objJSON.put("tweet", tweet.getText());
+			
+			try {
+				tweet.getGeoLocation();
+				objJSON.put("latitude", tweet.getGeoLocation().getLatitude());
+				objJSON.put("longitude", tweet.getGeoLocation().getLongitude());
+			}
+			catch(Exception e){
+				objJSON.put("latitude", null);
+				objJSON.put("longitude", null);
+			}
 
 			arrData.add(objJSON);
 

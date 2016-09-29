@@ -64,7 +64,7 @@
 				var htmlResult = "";
 
 				$(objResponse).each(function(index, item) {
-					htmlResult += fnDrawTwit(item);
+					htmlResult += fnDrawTweet(item);
 				});
 
 				$("#twits-container").html(htmlResult);
@@ -74,16 +74,16 @@
 
 	}
 
-	function fnDrawTwit(item) {
+	function fnDrawTweet(item) {
 
 		htmlTwit = "<div class='col-xs-12 col-sm-6 col-md-3'>";
 
 		htmlTwit += "<div class='tweet' " + "data-url=" + item.url
 		"+' >";
 
-		htmlTwit += "<div class='profile_pic > <a href='" + item.url
+		htmlTwit += "<div class='profile_pic' > <a href='" + item.url
 				+ "' target='_blank' ><img src='" + item.profile_pic
-				+ "' alt=''></a></div>";
+				+ "' alt='' /></a></div>";
 
 		htmlTwit += "<div class='name'>" + item.name + "</div>";
 		htmlTwit += "<div class='location'>" + item.location + "</div>";
