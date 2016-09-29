@@ -33,7 +33,24 @@ public class TwitterClass {
 		twitter.setOAuthAccessToken(new AccessToken(accessToken, accessTokenSecret));
 
 	}
+	public static String Trending() throws TwitterException{
+		
+        Trends result = twitter.getPlaceTrends(1);
+        
+        JSONArray arrData = new JSONArray();
+        for (Trend b:result.getTrends()){
+        	JSONObject objJSON = new JSONObject();
 
+			objJSON.put("name", b.getName());
+			objJSON.put("QueryName", b.getQuery());
+			objJSON.put("URL", b.getURL());
+			
+
+			arrData.add(objJSON);
+        }
+        return arrData.toString();
+        
+	}
 	public String searchByQueries(String queries) throws TwitterException {
 
 		Query query = new Query(queries);
