@@ -24,6 +24,10 @@
 	height: 500px;
 	width: 500px;
 }
+
+.tweet {
+	height: 150px;
+}
 </style>
 
 </head>
@@ -63,14 +67,25 @@
 
 		<div class="row">
 
-			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div id="trends"></div>
+			<div class="col-xs-12 col-sm-8 col-md-6">
+
+				<form class="form-inline">
+					<div class="form-group">
+						<label for="selTrending">Trending</label> <select id="selTrending"
+							class="form-control">
+							<option value=""></option>
+						</select>
+					</div>
+				</form>
+
 			</div>
 
-			<div class="col-xs-12 col-sm-6 col-md-6">
-				<div id="tweets"></div>
-			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12">
+				<div id="twits-container"></div>
+			</div>
 
 		</div>
 

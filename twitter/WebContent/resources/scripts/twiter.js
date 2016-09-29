@@ -56,9 +56,10 @@
 		};
 
 		$.ajax({
-			url : 'TwitterByCategory',
+			url : 'TweetsByCategory',
 			data : arrData,
 			dataType : 'json',
+			cache : false,
 			success : function(objResponse) {
 
 				var htmlResult = "";
@@ -76,19 +77,18 @@
 
 	function fnDrawTweet(item) {
 
-		htmlTwit = "<div class='col-xs-12 col-sm-6 col-md-3'>";
+		htmlTwit = "<div class='col-xs-12 col-sm-6 col-md-4'>";
 
-		htmlTwit += "<div class='tweet' " + "data-url=" + item.url
-		"+' >";
+		htmlTwit += "<div class='tweet' " + "data-url=" + item.url + "' >";
 
 		htmlTwit += "<div class='profile_pic' > <a href='" + item.url
 				+ "' target='_blank' ><img src='" + item.profile_pic
 				+ "' alt='' /></a></div>";
 
 		htmlTwit += "<div class='name'>" + item.name + "</div>";
-		htmlTwit += "<div class='location'>" + item.location + "</div>";
 		htmlTwit += "<div class='tweet_content'> <a href='" + item.url
 				+ "' target='_blank' >" + item.tweet_content + "</a></div>";
+		htmlTwit += "<div class='location'>" + item.location + "</div>";
 		htmlTwit += "</div>";
 		htmlTwit += "</div>";
 

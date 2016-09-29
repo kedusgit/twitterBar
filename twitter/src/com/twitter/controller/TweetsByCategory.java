@@ -11,8 +11,8 @@ import com.twitter.TwitterClass;
 
 import twitter4j.TwitterException;
 
-@WebServlet("/TwitterByCategory")
-public class TwitterByCategory extends HttpServlet {
+@WebServlet("/TweetsByCategory")
+public class TweetsByCategory extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private TwitterClass objTwiter;
